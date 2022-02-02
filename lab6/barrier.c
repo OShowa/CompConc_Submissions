@@ -7,7 +7,7 @@
 int *vector, blocked = 0, nthreads;
 pthread_mutex_t mutex_var;
 pthread_cond_t barrier_cond;
-
+double *local_sum;
 
 void initialize_vector() { // inicializa o vetor com nthreads elementos aleatórios de 0 a 9.
     int i; 
@@ -89,7 +89,7 @@ int main(int argc, char * argv[]) {
     }
     
     /* Alocações de memória */
-    int *local_sum = malloc(sizeof(int) * nthreads);
+    local_sum = malloc(sizeof(int) * nthreads);
     pthread_t *global_tid = malloc(sizeof(pthread_t) * nthreads);
 
     if (local_sum == NULL || global_tid == NULL) {
